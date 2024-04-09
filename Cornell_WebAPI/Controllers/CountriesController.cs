@@ -10,9 +10,9 @@ namespace Cornell_WebAPI.Controllers
     public class CountriesController : ControllerBase
     {
 
-        private readonly CornellContext _context;
+        private readonly CornellDbContext _context;
 
-        public CountriesController(CornellContext context)
+        public CountriesController(CornellDbContext context)
         {
             _context = context;
         }

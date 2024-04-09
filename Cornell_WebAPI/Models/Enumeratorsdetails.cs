@@ -16,7 +16,7 @@
 
         public string? Department { get; set; }
 
-        public int TelephoneNo { get; set; }
+        public string? Email { get; set; }
 
         public DateTime? DateRegistered { get; set; }
 

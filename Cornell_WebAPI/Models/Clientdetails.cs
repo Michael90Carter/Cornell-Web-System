@@ -20,6 +20,10 @@
 
         public DateTime? DateRegistered { get; set; }
 
+        public DateTime? DatePlacement { get; set; }
+
+        public string? CountryPlacement { get; set; }
+
         public byte[] ProfilePic { get; set; }
 
         public string? Description { get; set; }

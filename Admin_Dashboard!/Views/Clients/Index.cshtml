@@ -11,8 +11,8 @@
     <div class="col-sm-12">
         <div class="page-title-box">
             <div class="float-end">
-                <button type="button" id="add-student-button" class="btn btn-outline-primary mt-3 btn-round ms-auto d-flex" data-bs-toggle="modal" data-bs-target="#exampleModalLarge">+Add New</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+               <button type="button" class="btn btn-outline-primary mt-3 btn-round ms-auto d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">+Add New</button>
+               
             </div>           
               <h2 class="page-title mt-3">Registered Clients</h2>              
         </div><!--end page-title-box-->
@@ -49,12 +49,13 @@
                         <table id="accounts-datatable" class="table dt-responsive">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Id</th>
-                                    <th>Name</th>
+                                    <th>FirstName</th>
+                                    <th>LastName</th>
                                     <th>Sex</th>
-                                    <th>Age</th>
-                                    <th>PG Telephone</th>
-                                    <th>Country</th>
+                                    <th>Placement Date</th>
+                                    <th>Country placement</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -68,12 +69,157 @@
 
 <!-- modal-dialog -->
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
+<div class="modal fade bd-example-modal-lg" id ="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class = "modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h6 class="modal-title m-0 text-dark" id="AddAccountModal">Add Client Details</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-account-form" name="addaccountform" action="" method="post" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="number">Enumerator Id</label>
+                                            <div class="input-group">
+                                                <input type="number" name="enumeratorid" class="form-control mb-3" placeholder="Enter Id" required>
+                                            </div>
+                                           
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">First Name</label>
+                                            <div class="input-group">
+                                                <input type="text" name="firstname" class="form-control mb-3" placeholder="Enter First Name" required>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="date">Last Name</label>
+                                            <div class="input-group">
+                                                <input type="text" name="lastname" class="form-control mb-3" placeholder="Enter Last Name" required>
+                                            </div>
+                                    </div>
+                                </div>
+                                                               
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Gender</label>
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                <input type="text" name="gender" class="form-control mb-3" placeholder="Enter Sex" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">NIN No</label>
+                                        <div class="input-group">
+                                            <input type="text" name="nin_no" class="form-control mb-3" placeholder = "Enter Nin Number" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Address</label>
+                                            <div class="input-group">
+                                                <div class="input-group">
+                                                    <input type="text" name="address" class="form-control mb-3" placeholder="Enter Address" required>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Telephone Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                <input type="text" name="telephone" class="form-control mb-3" placeholder="Enter telephone number" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+
+                                    
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date">Date Registered</label>
+                                    <div class="input-group">
+                                        <input type="date" name="dateregistered" class="form-control mb-3" placeholder="Enter Registration Date" required>
+                                    </div> 
+                                </div>
+                            </div>
+                                   
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date">Date of Birth</label>
+                                    <div class="input-group">
+                                        <input type="date" name="dateofbirth" class="form-control mb-3" placeholder="Enter client dob" required>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date">Date of Placement</label>
+                                    <div class="input-group">
+                                        <input type="date" name="dateregistered" class="form-control mb-3" placeholder="Enter client placement Date" required>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Country Placement</label>
+                                    <div class="input-group">
+                                        <input type="text" name="countryplacement" class="form-control mb-3" placeholder="Enter country" required>
+                                    </div> 
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="image">Profile pic</label>
+                                    <div class="input-group">
+                                        <input type="image" name="profilepicture" class="form-control mb-3" placeholder="Attach Profile Picture" required>
+                                    </div>
+                                </div>
+                             </div>
+                             
+                           
+                             
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label> Description</label>
+                                        <div class="input-group">
+                                            <textarea class="form-control" rows="5" name="LongDescription" aria-label="Enter description" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-outline-primary btn-round px-3 py-2 mt-4" id="add-client-submit-button">Create Client</button>                     
+                        </div>                       
+                    </div>
+                </form>                  
+            </div>
+        </div>                                
+    </div>  
 </div>
 
 @section Scripts
@@ -93,5 +239,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>
     <script type="text/javascript" src="~/plugins/select/selectr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.10.6/libphonenumber-js.min.js" integrity="sha512-DIE7nTrAVZlfQH99EttilfOthEIDoL77dPajcUN4diozul9IgSDHUdgW0Kfqj5Qi6k1LQ53ESujDZSo00FEpYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="~/pages/student.js"></script>
+    <script src="~/pages/clients.js"></script>
 }

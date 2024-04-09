@@ -12,10 +12,10 @@
     <div class="col-sm-12">
         <div class="page-title-box">
             <div class="float-end">
-                <button type="button" id="add-student-button" class="btn btn-outline-primary mt-3 btn-round ms-auto d-flex" data-bs-toggle="modal" data-bs-target="#exampleModalLarge">+Add New</button>
+                <button type="button" class="btn btn-outline-primary mt-3 btn-round ms-auto d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">+Add New</button>
                 
             </div>           
-              <h2 class="page-title mt-3">Registered classes</h2>              
+              <h2 class="page-title mt-3">Registered Countries</h2>              
         </div><!--end page-title-box-->
     </div><!--end col-->
 </div>
@@ -47,18 +47,15 @@
                             </div>
                         </div>
                         
-                        <table id="accounts-datatable" class="table dt-responsive">
+                        <table id="dataTable" class="table dt-responsive">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Sex</th>
-                                    <th>Age</th>
-                                    <th>PG Telephone</th>
-                                    <th>Country</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
+                                <th></th>
+                                <th>Flag</th>
+                                <th>Country Code</th>
+                                <th>Country Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                
                             </thead>
                         </table>
                 </div>               
@@ -69,22 +66,51 @@
 
 <!-- modal-dialog -->
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
+<div class="modal fade bd-example-modal-lg" id ="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class = "modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h6 class="modal-title m-0 text-dark" id="AddAccountModal">Add Country Details</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-account-form" name="addaccountform" action="" method="post" novalidate>
+                    @Html.AntiForgeryToken()
+                            <div class="form-group row">
+                                <div class="col-md-6 mb-2">
+                                    <label for="name">Country Id</label>
+                                    <input type="text" placeholder="Country Id" name="Name" required class="form-control"/>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="name">Country Name</label>
+                                    <input type="text" placeholder="Country Name" name="Name" required class="form-control"/>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="name">Country Code</label>
+                                    <input type="text" name="CountryCode" placeholder="Country Code" required class="form-control"/>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <div class="col-md-12 mb-2">
+                                    <label for="name">Description</label>
+                                    <textarea type="text" name="LongDescription" required placeholder="Long description" class="form-control"></textarea>
+                                </div>
+                          
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-outline-primary btn-round px-3 py-2 mt-4" id="add-client-submit-button">Create Country</button>                     
+                            </div> 
+                </form>                
+            </div>
+        </div>                                
+    </div>  
 </div>
 
 @section Scripts
 {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
-
-
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -94,5 +120,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>
     <script type="text/javascript" src="~/plugins/select/selectr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.10.6/libphonenumber-js.min.js" integrity="sha512-DIE7nTrAVZlfQH99EttilfOthEIDoL77dPajcUN4diozul9IgSDHUdgW0Kfqj5Qi6k1LQ53ESujDZSo00FEpYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="~/pages/student.js"></script>
+    <script src="~/pages/country.js"></script>
 }
