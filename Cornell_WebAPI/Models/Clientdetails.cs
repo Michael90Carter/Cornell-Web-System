@@ -10,7 +10,7 @@
 
         public string? Gender { get; set; }
 
-        public string NIN_No { get; set; }
+        public string? NIN_No { get; set; }
 
         public string? Address { get; set; }
 
@@ -24,7 +24,7 @@
 
         public string? CountryPlacement { get; set; }
 
-        public byte[] ProfilePic { get; set; }
+        public string? ProfilePic { get; set; }
 
         public string? Description { get; set; }
     }

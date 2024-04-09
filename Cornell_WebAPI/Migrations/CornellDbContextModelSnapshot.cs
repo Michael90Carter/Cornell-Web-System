@@ -75,10 +75,9 @@ namespace Cornell_WebAPI.Migrations
                         .HasColumnType("nchar(10)")
                         .IsFixedLength();
 
-                    b.Property<byte[]>("ProfilePic")
-                        .IsRequired()
+                    b.Property<string>("ProfilePic")
                         .HasMaxLength(10)
-                        .HasColumnType("varbinary")
+                        .HasColumnType("nchar(10)")
                         .IsFixedLength();
 
                     b.Property<int>("TelephoneNo")

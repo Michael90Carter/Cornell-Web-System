@@ -62,8 +62,8 @@ public partial class CornellDbContext : DbContext
 
             entity.Property(e => e.ProfilePic)
              .HasMaxLength(10)
-             .IsFixedLength()
-             .HasColumnType("varbinary");
+             .IsFixedLength();
+
 
             entity.Property(e => e.Description)
              .HasMaxLength(10)

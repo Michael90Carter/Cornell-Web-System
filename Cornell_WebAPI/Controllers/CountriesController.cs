@@ -49,7 +49,7 @@ namespace Cornell_WebAPI.Controllers
         // PUT: api/Schoolsdetails/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSchoolsdetails(int id, Countriesdetails countriesdetails)
+        public async Task<IActionResult> PutCountriesdetails(int id, Countriesdetails countriesdetails)
         {
             if (id != countriesdetails.Id)
             {
