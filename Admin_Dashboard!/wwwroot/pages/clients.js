@@ -2,20 +2,6 @@
 // Class definition
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function () {
 
 

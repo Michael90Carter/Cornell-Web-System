@@ -1,9 +1,13 @@
-using Cornell_WebAPI.Models;
+﻿using Cornell_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Cornell_WebAPI.Data;
 
 /*var MyAllowSpecificorigins = "_myAllowSpecificOrigins";*/
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Cornell_WebAPI_DbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Cornell_WebAPI_DbContext") ?? throw new InvalidOperationException("Connection string 'Cornell_WebAPI_DbContext' not found.")));
 
 // Add services to the container.
 
@@ -19,8 +23,8 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddDbContext<CornellDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
+builder.Services.AddDbContext<Cornell_WebAPI_DbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("Cornell_WebAPI_DbContext")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

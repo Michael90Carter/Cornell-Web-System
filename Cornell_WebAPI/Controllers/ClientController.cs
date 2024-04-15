@@ -1,41 +1,45 @@
-﻿using Cornell_WebAPI.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Cornell_WebAPI.Data;
+using Cornell_WebAPI.Models;
 
 namespace Cornell_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class ClientController : ControllerBase
     {
+        private readonly Cornell_WebAPI_DbContext _context;
 
-        private readonly CornellDbContext _context;
-
-        public ClientsController(CornellDbContext context)
+        public ClientController(Cornell_WebAPI_DbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Clientdetails
+        // GET: api/Client
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Clientdetails>>> GetClientdetails()
         {
-            if (_context.Clientdetails == null)
-            {
-                return NotFound();
-            }
+          if (_context.Clientdetails == null)
+          {
+              return NotFound();
+          }
             return await _context.Clientdetails.ToListAsync();
         }
 
-        // GET: api/Schoolsdetails/5
+        // GET: api/Client/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Clientdetails>> GetClientdetails(int id)
         {
-            if (_context.Clientdetails == null)
-            {
-                return NotFound();
-            }
+          if (_context.Clientdetails == null)
+          {
+              return NotFound();
+          }
             var clientdetails = await _context.Clientdetails.FindAsync(id);
 
             if (clientdetails == null)
@@ -46,7 +50,7 @@ namespace Cornell_WebAPI.Controllers
             return clientdetails;
         }
 
-        // PUT: api/Schoolsdetails/5
+        // PUT: api/Client/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutClientdetails(int id, Clientdetails clientdetails)
@@ -64,7 +68,7 @@ namespace Cornell_WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientdetailExists(id))
+                if (!ClientdetailsExists(id))
                 {
                     return NotFound();
                 }
@@ -77,22 +81,22 @@ namespace Cornell_WebAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Schoolsdetails
+        // POST: api/Client
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Clientdetails>> PostClientdetails(Clientdetails clientdetails)
         {
-            if (_context.Clientdetails == null)
-            {
-                return Problem("Entity set 'CornellDbContext.Clientdetails'  is null.");
-            }
+          if (_context.Clientdetails == null)
+          {
+              return Problem("Entity set 'Cornell_WebAPI_DbContext.Clientdetails'  is null.");
+          }
             _context.Clientdetails.Add(clientdetails);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetClientdetails", new { id = clientdetails.Id }, clientdetails);
         }
 
-        // DELETE: api/Schoolsdetails/5
+        // DELETE: api/Client/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClientdetails(int id)
         {
@@ -112,7 +116,7 @@ namespace Cornell_WebAPI.Controllers
             return NoContent();
         }
 
-        private bool ClientdetailExists(int id)
+        private bool ClientdetailsExists(int id)
         {
             return (_context.Clientdetails?.Any(e => e.Id == id)).GetValueOrDefault();
         }
